@@ -21,33 +21,17 @@ process.stdin.on('end', _ => {
 function readLine() {
     return inputString[currentLine++];
 }
+/*
+ * Create the function factorial here
+ */
+function factorial(x){
+    if(x==1){
+        return x;}
+    else{
+        return x * factorial(x-1);}}
 
-/**
-*   Calculate the area of a rectangle.
-*
-*   length: The length of the rectangle.
-*   width: The width of the rectangle.
-*   
-*	Return a number denoting the rectangle's area.
-**/
-function getArea(length, width) {
-    let area;
-    area = length * width
+function main() {
+    const n = +(readLine());
     
-    return area;
-}
-
-/**
-*   Calculate the perimeter of a rectangle.
-*	
-*	length: The length of the rectangle.
-*   width: The width of the rectangle.
-*   
-*	Return a number denoting the perimeter of a rectangle.
-**/
-function getPerimeter(length, width) {
-    let perimeter;
-    perimeter = 2 * (length + width)
-    
-    return perimeter;
+    console.log(factorial(n));
 }
