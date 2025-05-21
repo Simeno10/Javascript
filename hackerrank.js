@@ -22,20 +22,33 @@ function readLine() {
     return inputString[currentLine++];
 }
 
-function main() {
-    // Write your code here. Read input using 'readLine()' and print output using 'console.log()'.
-    
-    // Print the area of the circle:
-    
-    // Print the perimeter of the circle:
-    console.log(Math.pow(inputString,2)*Math.PI);
-    console.log(2*Math.PI*inputString);
-    try {    
-        // Attempt to redefine the value of constant variable PI
-        PI = 0;
-        // Attempt to print the value of PI
-        console.log(PI);
-    } catch(error) {
-        console.error("You correctly declared 'PI' as a constant.");
+function getGrade(score) {
+    let grade;
+    if(score<=5){
+        grade = 'F'
     }
+    else if(score<=10){
+        grade = 'E'
+    }
+    else if(score<=15){
+        grade = 'D'
+    }
+    else if(score<=20){
+        grade = 'C'
+    }
+    else if(score<=25){
+        grade = 'B'
+    }
+    else if(score<=30){
+        grade = 'A'
+    }
+    
+    return grade;
+}
+
+
+function main() {
+    const score = +(readLine());
+    
+    console.log(getGrade(score));
 }
