@@ -22,35 +22,23 @@ function readLine() {
     return inputString[currentLine++];
 }
 
-/**
-*   Return the second largest number in the array.
-*   @param {Number[]} nums - An array of numbers.
-*   @return {Number} The second largest number in the array.
-**/
-function getSecondLargest(nums) {
-    let large = nums[0];
-    let second = 0;
-    if(nums[1]>nums[0]){
-        second = nums[0];
-        large = nums[1];    }
-    else{
-        second = nums[1]
+/*
+ * Complete the reverseString function
+ * Use console.log() to print to stdout.
+ */
+function reverseString(s) {
+    try {
+        s = s.split('').reverse().join('');
+    } catch (err) {
+        console.log(err.message);
+    } finally {
+        console.log(s);
     }
-    for (let i=2; i<nums.length; i++){
-        if(nums[i]>large){
-            second = large;
-            large = nums[i];    }
-        else if (nums[i]>second && nums[i]!=large){
-            second = nums[i]
-    }
-    }
-    return second;
 }
 
 
 function main() {
-    const n = +(readLine());
-    const nums = readLine().split(' ').map(Number);
+    const s = eval(readLine());
     
-    console.log(getSecondLargest(nums));
+    reverseString(s);
 }
