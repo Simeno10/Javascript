@@ -23,22 +23,34 @@ function readLine() {
 }
 
 /*
- * Complete the reverseString function
- * Use console.log() to print to stdout.
+ * Complete the isPositive function.
+ * If 'a' is positive, return "YES".
+ * If 'a' is 0, throw an Error with the message "Zero Error"
+ * If 'a' is negative, throw an Error with the message "Negative Error"
  */
-function reverseString(s) {
-    try {
-        s = s.split('').reverse().join('');
-    } catch (err) {
-        console.log(err.message);
-    } finally {
-        console.log(s);
+function isPositive(a) {
+    if (a>0){
+        return "YES";
+    }
+    else if (a==0){
+        throw new Error("Zero Error");
+    }
+    else {
+        throw new Error("Negative Error");
     }
 }
 
 
 function main() {
-    const s = eval(readLine());
+    const n = +(readLine());
     
-    reverseString(s);
+    for (let i = 0; i < n; i++) {
+        const a = +(readLine());
+      
+        try {
+            console.log(isPositive(a));
+        } catch (e) {
+            console.log(e.message);
+        }
+    }
 }
