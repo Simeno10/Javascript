@@ -23,34 +23,26 @@ function readLine() {
 }
 
 /*
- * Complete the isPositive function.
- * If 'a' is positive, return "YES".
- * If 'a' is 0, throw an Error with the message "Zero Error"
- * If 'a' is negative, throw an Error with the message "Negative Error"
+ * Complete the Rectangle function
  */
-function isPositive(a) {
-    if (a>0){
-        return "YES";
-    }
-    else if (a==0){
-        throw new Error("Zero Error");
-    }
-    else {
-        throw new Error("Negative Error");
-    }
+function Rectangle(a, b) {
+    return{
+        length: a,
+        width: b,
+        perimeter: 2*a+2*b,
+        area: a*b
+    };
 }
 
 
 function main() {
-    const n = +(readLine());
+    const a = +(readLine());
+    const b = +(readLine());
     
-    for (let i = 0; i < n; i++) {
-        const a = +(readLine());
-      
-        try {
-            console.log(isPositive(a));
-        } catch (e) {
-            console.log(e.message);
-        }
-    }
+    const rec = new Rectangle(a, b);
+    
+    console.log(rec.length);
+    console.log(rec.width);
+    console.log(rec.perimeter);
+    console.log(rec.area);
 }
