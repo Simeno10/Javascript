@@ -23,26 +23,32 @@ function readLine() {
 }
 
 /*
- * Complete the Rectangle function
+ * Return a count of the total number of objects 'o' satisfying o.x == o.y.
+ * 
+ * Parameter(s):
+ * objects: an array of objects with integer properties 'x' and 'y'
  */
-function Rectangle(a, b) {
-    return{
-        length: a,
-        width: b,
-        perimeter: 2*a+2*b,
-        area: a*b
-    };
+function getCount(objects) {
+    let counter = 0;
+    for (let i = 0; i<objects.length; i++){
+        if(objects[i].x==objects[i].y){
+            counter ++;
+        }
+    }
+    
+    return counter;
 }
 
 
 function main() {
-    const a = +(readLine());
-    const b = +(readLine());
+    const n = +(readLine());
+    let objects = [];
     
-    const rec = new Rectangle(a, b);
+    for (let i = 0; i < n; i++) {
+        const [a, b] = readLine().split(' ');
+        
+        objects.push({x: +(a), y: +(b)});
+    }
     
-    console.log(rec.length);
-    console.log(rec.width);
-    console.log(rec.perimeter);
-    console.log(rec.area);
+    console.log(getCount(objects));
 }
