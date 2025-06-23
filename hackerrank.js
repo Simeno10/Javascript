@@ -1,30 +1,54 @@
-class Rectangle {
-    constructor(w, h) {
-        this.w = w;
-        this.h = h;
-    }
-}
+'use strict';
 
-// Add an area method to Rectangle's prototype
-Rectangle.prototype.area = function() {
-    return this.w * this.h;
-};
+process.stdin.resume();
+process.stdin.setEncoding('utf-8');
 
-// Create a Square class that inherits from Rectangle
-class Square extends Rectangle {
-    constructor(side) {
-        super(side, side);
-    }
-}
+let inputString = '';
+let currentLine = 0;
 
+process.stdin.on('data', inputStdin => {
+    inputString += inputStdin;
+});
 
-if (JSON.stringify(Object.getOwnPropertyNames(Square.prototype)) === JSON.stringify([ 'constructor' ])) {
-    const rec = new Rectangle(3, 4);
-    const sqr = new Square(3);
+process.stdin.on('end', _ => {
+    inputString = inputString.trim().split('\n').map(string => {
+        return string.trim();
+    });
     
-    console.log(rec.area());
-    console.log(sqr.area());
-} else {
-    console.log(-1);
-    console.log(-1);
+    main();    
+});
+
+function readLine() {
+    return inputString[currentLine++];
+}
+
+/*
+ * Determine the original side lengths and return an array:
+ * - The first element is the length of the shorter side
+ * - The second element is the length of the longer side
+ * 
+ * Parameter(s):
+ * literals: The tagged template literal's array of strings.
+ * expressions: The tagged template literal's array of expression values (i.e., [area, perimeter]).
+ */
+function sides(literals, ...expressions) {
+    const [area, perimeter] = expressions;
+
+    const s1 = (perimeter + Math.sqrt(perimeter * perimeter - 16 * area)) / 4;
+    const s2 = (perimeter - Math.sqrt(perimeter * perimeter - 16 * area)) / 4;
+
+    return [Math.min(s1, s2), Math.max(s1, s2)];
+}
+
+
+function main() {
+    let s1 = +(readLine());
+    let s2 = +(readLine());
+    
+    [s1, s2] = [s1, s2].sort();
+    
+    const [x, y] = sides`The area is: ${s1 * s2}.\nThe perimeter is: ${2 * (s1 + s2)}.`;
+    
+    console.log((s1 === x) ? s1 : -1);
+    console.log((s2 === y) ? s2 : -1);
 }
