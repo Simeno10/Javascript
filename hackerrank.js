@@ -23,32 +23,19 @@ function readLine() {
 }
 
 /*
- * Determine the original side lengths and return an array:
- * - The first element is the length of the shorter side
- * - The second element is the length of the longer side
+ * Modify and return the array so that all even elements are doubled and all odd elements are tripled.
  * 
  * Parameter(s):
- * literals: The tagged template literal's array of strings.
- * expressions: The tagged template literal's array of expression values (i.e., [area, perimeter]).
+ * nums: An array of numbers.
  */
-function sides(literals, ...expressions) {
-    const [area, perimeter] = expressions;
-
-    const s1 = (perimeter + Math.sqrt(perimeter * perimeter - 16 * area)) / 4;
-    const s2 = (perimeter - Math.sqrt(perimeter * perimeter - 16 * area)) / 4;
-
-    return [Math.min(s1, s2), Math.max(s1, s2)];
+function modifyArray(nums) {
+    return nums.map(num => num % 2 === 0 ? num * 2 : num * 3);
 }
 
 
 function main() {
-    let s1 = +(readLine());
-    let s2 = +(readLine());
+    const n = +(readLine());
+    const a = readLine().split(' ').map(Number);
     
-    [s1, s2] = [s1, s2].sort();
-    
-    const [x, y] = sides`The area is: ${s1 * s2}.\nThe perimeter is: ${2 * (s1 + s2)}.`;
-    
-    console.log((s1 === x) ? s1 : -1);
-    console.log((s2 === y) ? s2 : -1);
+    console.log(modifyArray(a).toString().split(',').join(' '));
 }
