@@ -14,7 +14,6 @@ let person = {
     age: 25
 };
 
-
 person.name = "John"
 let selection = 'name'
 person[selection] = "Mary"
