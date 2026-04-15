@@ -3,6 +3,7 @@
  * @param {string} password - The password to be checked.
  * @throws {Error} If the password is not a string, is too short, too long, or does not meet the required criteria.
  */
+
 export function checkPassword(password) {
     if(typeof password !== 'string') {
         throw new Error('Password must be a string');
