@@ -2,6 +2,7 @@ import express, {Application, Router} from 'express';
 import { EmplController } from '../controllers/EmplController';
 import cors from 'cors'; // Import the cors package
 
+
 export class EmplRoutes {
 
     private app: Application;
